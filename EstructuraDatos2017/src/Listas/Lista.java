@@ -18,15 +18,24 @@ public class Lista {
     
     public void AgregarNodo(int valor)
     {
-        if (Cabeza == null)
+        Nodo Cola = ObtenerUltimo();
+        //si no existe ningun nodo, crea la cabeza, de lo contrario agrega el nuevo Nodo al siguiente de la cola
+        if ( Cola== null)
             Cabeza = new Nodo (valor);
-        else
+        else                    
+            Cola.setSiguiente(new Nodo(valor));                                            
+    }
+    private Nodo ObtenerUltimo()
+    {
+        Nodo NodoActual = Cabeza;
+        if (NodoActual == null)
+            return null;
+        while (NodoActual.getSiguiente() !=  null)
         {
-            Nodo NodoActual = new Nodo(valor);
-            NodoActual.setSiguiente(Cabeza);
-            Cabeza = NodoActual;                       
+            NodoActual = NodoActual.getSiguiente();
         }
-    
+        return NodoActual;
+        
     }
     public Nodo EliminarNodo()
     {
@@ -44,7 +53,7 @@ public class Lista {
             while (NodoActual!= null)
             {
                 sb.append(NodoActual.getValor());
-                sb.append ("--");
+                sb.append ("->");
                 NodoActual = NodoActual.getSiguiente();
             }
             

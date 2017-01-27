@@ -10,8 +10,8 @@ package Listas;
  * @author OscarIvan
  */
 public class Nodo {
-    int Valor; 
-    Nodo Siguiente; 
+    private int Valor; 
+    private Nodo Siguiente; 
     
     public Nodo(int valor)
     {
