@@ -7,54 +7,67 @@ package Listas;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.lang.Object;
+
 /**
  *
  * @author OscarIvan
  */
-public class Lista {
+public class ListaDoble extends Lista
+{
+    protected NodoDoble Cabeza;
+
     
-    protected Nodo Cabeza; 
-    
+    @Override
     public void AgregarNodo(int valor)
     {
-        Nodo Cola = ObtenerUltimo();
+        NodoDoble Cola = ObtenerUltimo();
         //si no existe ningun nodo, crea la cabeza, de lo contrario agrega el nuevo Nodo al siguiente de la cola
         if ( Cola== null)
-            Cabeza = new Nodo (valor);
-        else                    
-            Cola.setSiguiente(new Nodo(valor));                                            
-    }
-    public Nodo ObtenerCabeza()
-    {
-        return Cabeza;
-    }
-    public Nodo ObtenerUltimo()
-    {
-        Nodo NodoActual = Cabeza;
-        if (NodoActual == null)
-            return null;
-        while (NodoActual.getSiguiente() !=  null)
-        {
-            NodoActual = NodoActual.getSiguiente();
+            Cabeza = new NodoDoble (valor);
+        else
+        {             
+            Cola.setSiguiente(new NodoDoble(valor));                                            
+            Cola.getSiguiente().setAnterior(Cola);            
         }
-        return NodoActual;
         
     }
-    public Nodo EliminarNodo()
+    
+    @Override
+    public NodoDoble EliminarNodo()
     {
-        Nodo NodoADevolver = Cabeza; 
+        NodoDoble NodoADevolver = Cabeza; 
         Cabeza = Cabeza.getSiguiente();
+        if (Cabeza != null)
+            Cabeza.setAnterior(null);
         return NodoADevolver;
     
     }
     @Override
-    public String toString()
+    public NodoDoble ObtenerCabeza()
+    {
+        return Cabeza;
+    }
+    
+    @Override
+    public NodoDoble ObtenerUltimo()
+    {
+        NodoDoble NodoActual = Cabeza;
+        if (NodoActual == null)
+            return null;
+        while (NodoActual.getSiguiente() !=  null)
+        {
+            NodoActual = (NodoDoble) NodoActual.getSiguiente();
+            
+        }
+        return NodoActual;        
+    }
+    
+        public String toString()
     {
         StringBuilder sb = new StringBuilder();
         if (Cabeza != null)
         {
-            Nodo NodoActual = Cabeza;
+            NodoDoble NodoActual = Cabeza;
             while (NodoActual!= null)
             {
                 sb.append(NodoActual.getValor());
@@ -67,6 +80,4 @@ public class Lista {
         return sb.toString();
 
     }
-    
-    
 }

@@ -10,8 +10,8 @@ package Listas;
  * @author OscarIvan
  */
 public class Nodo {
-    private int Valor; 
-    private Nodo Siguiente; 
+    protected int  Valor; 
+    protected Nodo Siguiente; 
     
     public Nodo(int valor)
     {
@@ -38,4 +38,9 @@ public class Nodo {
         return this.Siguiente;
     }
     
+    public String toString()
+    {
+        return Integer.toString(Valor);
+    }
+            
 }
