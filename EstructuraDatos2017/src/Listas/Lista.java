@@ -12,11 +12,18 @@ import java.lang.Object;
  *
  * @author OscarIvan
  */
-public class Lista {
+public class Lista <U extends Comparable> implements Comparable{
     
-    protected Nodo Cabeza; 
+    protected Nodo<U> Cabeza; 
     
-    public void AgregarNodo(int valor)
+    
+    public void AgregarNodoCabeza(U valor)
+    {
+        Nodo<U> NuevoNodo = new<U> Nodo(valor);
+        NuevoNodo.setSiguiente(Cabeza);
+        Cabeza = NuevoNodo;        
+    }
+    public void AgregarNodo(U valor)
     {
         Nodo Cola = ObtenerUltimo();
         //si no existe ningun nodo, crea la cabeza, de lo contrario agrega el nuevo Nodo al siguiente de la cola
@@ -66,6 +73,11 @@ public class Lista {
         sb.append("null");
         return sb.toString();
 
+    }
+
+    @Override
+    public int compareTo(Object t) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

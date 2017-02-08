@@ -9,21 +9,21 @@ package Listas;
  *
  * @author OscarIvan
  */
-public class Nodo {
-    protected int  Valor; 
+public class Nodo <T extends Comparable> implements Comparable{
+    protected T  Valor; 
     protected Nodo Siguiente; 
     
-    public Nodo(int valor)
+    public Nodo(T valor)
     {
         this.Valor = valor;
     }
     
-    public void setValor(int valor)
+    public void setValor(T valor)
     {
         this.Valor = valor;
     }
     
-    public int getValor()
+    public T getValor()
     {
         return this.Valor;
     } 
@@ -38,9 +38,18 @@ public class Nodo {
         return this.Siguiente;
     }
     
+    @Override
     public String toString()
     {
-        return Integer.toString(Valor);
+        return Valor.toString();
     }
+
+    @Override
+    public int compareTo(Object other) {
+        return Valor.compareTo(other);
+        
+    }
+    
+    
             
 }

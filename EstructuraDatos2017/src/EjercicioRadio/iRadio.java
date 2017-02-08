@@ -20,5 +20,5 @@ public interface iRadio {
     public void Forward();
     public void Backward();
     public void setMemory(int Position);
-    public String ToString();
+    public String toString();
 }

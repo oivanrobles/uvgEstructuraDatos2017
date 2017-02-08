@@ -9,7 +9,7 @@ package EjercicioRadio;
  *
  * @author OscarIvan
  */
-public class MemoryBoton{
+public class MemoryBoton implements Comparable{
 
     String frecuency;
     String station; 
@@ -27,5 +27,17 @@ public class MemoryBoton{
         this.frecuency = frecuency;
         this.station = station;
     }
+    
+    public String toString()
+    {
+        return frecuency + "  " + station ;
+    }
+
+    @Override
+    public int compareTo(Object other) {
+        return this.toString().compareTo(other.toString());
+    }
+    
+    
     
 }

@@ -12,13 +12,21 @@ import java.util.Set;
  *
  * @author OscarIvan
  */
-public class ListaDoble extends Lista
+public class ListaDoble <V> 
 {
     protected NodoDoble Cabeza;
 
     
-    @Override
-    public void AgregarNodo(int valor)
+    public void AgregarNodoCabeza(V valor)
+    {
+        NodoDoble NuevoNodo = new NodoDoble( valor);
+        NuevoNodo.setSiguiente(Cabeza);
+        Cabeza.setAnterior(NuevoNodo);
+        Cabeza = NuevoNodo;        
+    }
+    
+    
+    public void AgregarNodo(V valor)
     {
         NodoDoble Cola = ObtenerUltimo();
         //si no existe ningun nodo, crea la cabeza, de lo contrario agrega el nuevo Nodo al siguiente de la cola
@@ -32,7 +40,7 @@ public class ListaDoble extends Lista
         
     }
     
-    @Override
+    
     public NodoDoble EliminarNodo()
     {
         NodoDoble NodoADevolver = Cabeza; 
@@ -42,13 +50,12 @@ public class ListaDoble extends Lista
         return NodoADevolver;
     
     }
-    @Override
+    
     public NodoDoble ObtenerCabeza()
     {
         return Cabeza;
     }
     
-    @Override
     public NodoDoble ObtenerUltimo()
     {
         NodoDoble NodoActual = Cabeza;
@@ -73,11 +80,9 @@ public class ListaDoble extends Lista
                 sb.append(NodoActual.getValor());
                 sb.append ("->");
                 NodoActual = NodoActual.getSiguiente();
-            }
-            
+            }            
         }
         sb.append("null");
         return sb.toString();
-
     }
 }

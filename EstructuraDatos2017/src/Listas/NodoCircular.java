@@ -9,21 +9,33 @@ package Listas;
  *
  * @author OscarIvan
  */
-public class NodoCircular extends NodoDoble{
-        
+public class NodoCircular<T>{
+    
+    protected T  Valor;     
     protected NodoCircular Siguiente;
     protected NodoCircular Anterior;
     protected boolean Cabeza;
 
-    public NodoCircular(int valor) {
-        super(valor);
+    public NodoCircular(T valor) {
+        this.Valor = valor;
     }  
        public void setSiguiente(NodoCircular siguiente)
     {
         this.Siguiente = siguiente;
     }
     
-    @Override
+       
+    public void setValor(T valor)
+    {
+        this.Valor = valor;
+    }
+    
+    public T getValor()
+    {
+        return this.Valor;
+    } 
+    
+    
     public NodoCircular getSiguiente()
     {
         return this.Siguiente;
@@ -33,7 +45,7 @@ public class NodoCircular extends NodoDoble{
         this.Anterior = siguiente;
     }
     
-    @Override
+    
     public NodoCircular getAnterior()
     {
         return this.Anterior;

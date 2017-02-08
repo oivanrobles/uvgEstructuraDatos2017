@@ -8,13 +8,24 @@ package Listas;
 /**
  *
  * @author OscarIvan
+ * @param <W>
  */
-public class ListaCircular  extends Lista
+public class ListaCircular<W> 
 {
     NodoCircular Cabeza;
     
-    @Override
-    public void AgregarNodo(int valor)
+    public void AgregarNodoCabeza(W valor)
+    {
+        NodoCircular NuevoNodo = new NodoCircular( valor);
+        NuevoNodo.setSiguiente(Cabeza);
+        NuevoNodo.setAnterior(Cabeza.getAnterior());
+        Cabeza.setAnterior(NuevoNodo);
+        Cabeza = NuevoNodo;        
+    }
+    
+    
+    
+    public void AgregarNodo(W valor)
     {
         NodoCircular Cola = ObtenerUltimo();
         //si no existe ningun nodo, crea la cabeza, de lo contrario agrega el nuevo Nodo al siguiente de la cola
@@ -38,8 +49,8 @@ public class ListaCircular  extends Lista
     }
     
     
-    @Override
-    public Nodo ObtenerCabeza()
+    
+    public NodoCircular ObtenerCabeza()
     {
         return Cabeza;
     }
@@ -52,7 +63,7 @@ public class ListaCircular  extends Lista
     }
     
     
-    @Override
+    
     public NodoCircular EliminarNodo()
     {   
         if (Cabeza == Cabeza.getSiguiente())

@@ -9,7 +9,7 @@ import java.lang.String;
  *
  * @author OscarIvan
  */
-public class Radio implements iRadio {
+public class Radio implements iRadio,Comparable {
 
     boolean isOn; 
     String frecuency;
@@ -17,11 +17,11 @@ public class Radio implements iRadio {
     MemoryBoton[] Memorias;
     
     
-    public Radio(){
+    public Radio(int memorias){
         isOn = false;
         frecuency ="AM";
         station = "530";    
-        
+        Memorias = new MemoryBoton[memorias];  
     }
     
     @Override
@@ -95,18 +95,32 @@ public class Radio implements iRadio {
             Memorias[Position] = new MemoryBoton(frecuency, station);
     }
 
-    @Override
-    public String ToString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("isON:");
-        sb.append(isOn);
-        sb.append(" Frecuency:");
-        sb.append(frecuency);
-        sb.append(" Station:");
-        sb.append(station);
-        
-        return sb.toString();
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        sb.append("isON:");
+//        sb.append(isOn);
+//        sb.append(" Frecuency:");
+//        sb.append(frecuency);
+//        sb.append(" Station:");
+//        sb.append(station);
+//        
+//        return sb.toString();
+//
+//    }
 
+    @Override
+    public int compareTo(Object other) {
+        int result;
+        String otherFrecuency = ((Radio)other).getFrecuency();
+        String otherStation = ((Radio)other).getStation();
+
+        if (frecuency.equals(otherFrecuency))
+           result = station.compareTo(otherStation);
+        else
+           result = frecuency.compareTo(otherFrecuency);
+
+        return result;
     }
     
 }

@@ -11,18 +11,25 @@ import java.util.HashSet;
  *
  * @author OscarIvan
  */
-public class NodoDoble extends Nodo{
+public class NodoDoble <T> {
+    protected T  Valor; 
     protected NodoDoble Siguiente; 
     protected NodoDoble Anterior;
 
-    public NodoDoble(int valor) {
-        super(valor);
+    public NodoDoble(T valor) {
+        this.Valor = valor;
     }
 
-    public int NodoDoble() 
+    public void setValor(T valor)
     {
-        return 0;
+        this.Valor = valor;
     }
+    
+    public T getValor()
+    {
+        return this.Valor;
+    } 
+    
     
     public void setSiguiente(NodoDoble siguiente)
     {
@@ -30,7 +37,7 @@ public class NodoDoble extends Nodo{
         siguiente.setAnterior(this);        
     }
     
-    @Override
+    
     public NodoDoble getSiguiente()
     {
         return this.Siguiente;
