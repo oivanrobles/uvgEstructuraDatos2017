@@ -76,12 +76,12 @@ public class Lista<U extends Comparable> implements Comparable {
 
     // Pieza de código cortesía de NoTengoBattery
     public void bubbleSort() {
-        boolean wasChanged = true;
-        // wasChanged es True durante el cuerpo de este while, después de las condiciones iniciales
+        boolean l_wasChanged = true;
+        // l_wasChanged es True durante el cuerpo de este while, después de las condiciones iniciales
         // si la lista ha sido modificada. Se sabe que la lista se modifica solo si no está ordenada
-        while (wasChanged) {
+        while (l_wasChanged) {
             // 4 condiciones iniciales del estado conocido
-            wasChanged = false;
+            l_wasChanged = false;
             Nodo l_anterior = null;
             Nodo l_actual = Cabeza;
             Nodo l_siguiente = l_actual.getSiguiente();
@@ -89,7 +89,7 @@ public class Lista<U extends Comparable> implements Comparable {
             while (l_siguiente != null) {
                 final int l_result = l_actual.compareTo(l_siguiente.getValor());
                 if (l_result >= 1) {
-                    Nodo l_tercero = l_siguiente.getSiguiente();
+                    final Nodo l_tercero = l_siguiente.getSiguiente();
                     // El primer nodo apunta al tercer nodo
                     l_actual.setSiguiente(l_tercero);
                     // El segundo nodo apunta al primer nodo
@@ -99,7 +99,7 @@ public class Lista<U extends Comparable> implements Comparable {
                         l_anterior.setSiguiente(l_siguiente);
                     }
                     // Indica que la lista ha cambiado
-                    wasChanged = true;
+                    l_wasChanged = true;
                     // Cambia la cabeza si el nodo ordenado es la cabeza
                     Cabeza = ((l_actual == Cabeza) ? l_siguiente : Cabeza);
                     // "Actual" y "siguiente" están en orden inverso, actual es mayor
