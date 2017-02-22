@@ -3,8 +3,18 @@ package com.gmail.notengobattery.fabrica;
 /**
  * Esta es una fábrica de figuras
  */
-public class FigurasFabrica {
-    Figura getFigura(final int lados, final double... medidas) {
+public enum FigurasFabrica {
+    ;
+
+    /**
+     * Devuelve una figura dado el número de lados, o {@code null} si no se puede crear
+     *
+     * @param lados   número de lados
+     * @param medidas una lista con todas las medidas
+     *
+     * @return la figura generada
+     */
+    static Figura getFigura(final int lados, final double... medidas) {
         switch (lados) {
             case 0:
                 return new Circulo(medidas[0]);

@@ -6,6 +6,8 @@ package com.gmail.notengobattery.fabrica;
 public interface Figura {
     /**
      * Dibuja la figura.
+     *
+     * @return el nombre de la figura
      */
     String dibujar();
 
