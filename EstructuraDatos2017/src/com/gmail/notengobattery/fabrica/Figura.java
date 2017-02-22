@@ -7,7 +7,7 @@ public interface Figura {
     /**
      * Dibuja la figura.
      */
-    void dibujar();
+    String dibujar();
 
     /**
      * @return el área de la figura
