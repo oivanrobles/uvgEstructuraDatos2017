@@ -14,7 +14,7 @@ public abstract class Pila<T> implements IPila<T> {
      * @param isFifo         si es {@code true}, entonces la pila es FIFO, caso contrario es LIFO
      * @param almacenamiento el almacenamiento a utilizar en la pila
      */
-    Pila(final boolean isFifo, final Consumible<T> almacenamiento) {
+    protected Pila(final boolean isFifo, final Consumible<T> almacenamiento) {
         m_isFifo = isFifo;
         m_almacenamiento = almacenamiento;
     }

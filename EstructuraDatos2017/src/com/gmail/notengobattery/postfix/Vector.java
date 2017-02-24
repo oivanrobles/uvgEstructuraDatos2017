@@ -6,10 +6,10 @@ import java.util.Arrays;
  * Clase de implementación mínima del {@link Consumible} de tipo Vector.
  */
 public class Vector<T extends Comparable<T>> implements Consumible<T> {
+    private final int m_incremento;
     private int m_ultimo;
     private int m_tamano;
     private Object m_array[];
-    private final int m_incremento;
 
     /**
      * Crea un nuevo Vector, con capacidad inicial e incremento
