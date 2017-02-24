@@ -1,16 +1,16 @@
 package com.gmail.notengobattery.postfix;
 
 /**
- *
+ * Es una pila basada en la estructura de {@link Vector}
  */
 public class PilaVector<T> extends Pila<T> {
 
     /**
      * Crea una nueva pila FIFO o LIFO
      *
-     * @param isFifo         si es {@code true}, entonces la pila es FIFO, caso contrario es LIFO
+     * @param isFifo si es {@code true}, entonces la pila es FIFO, caso contrario es LIFO
      */
     PilaVector(final boolean isFifo) {
-        super(isFifo, new Vector());
+        super(isFifo, new Vector(10, 10));
     }
 }
