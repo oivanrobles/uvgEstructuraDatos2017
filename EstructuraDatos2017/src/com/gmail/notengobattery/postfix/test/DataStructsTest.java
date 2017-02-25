@@ -1,3 +1,4 @@
+import com.gmail.notengobattery.postfix.ArrayList2;
 import com.gmail.notengobattery.postfix.Consumible;
 import com.gmail.notengobattery.postfix.Lista;
 import com.gmail.notengobattery.postfix.ListaCircular;
@@ -23,7 +24,7 @@ public class DataStructsTest {
      */
     @Test
     public void testVector() {
-        final Consumible<Integer> l_vector = new Vector<Integer>(3, 1);
+        final Consumible<Integer> l_vector = new Vector<Integer>(25, 1);
         l_vector.ponerValorInicio(3);
         l_vector.ponerValorFinal(4);
         l_vector.ponerValorInicio(2);
@@ -156,5 +157,40 @@ public class DataStructsTest {
         assertThat(VALOR_NO_CORRESPONDE, l_circular.quitarValorInicio(), is(equalTo(9)));
         assertThat(VALOR_NO_CORRESPONDE, l_circular.quitarValorFinal(), is(equalTo(10)));
         assertThat(VALOR_NO_CORRESPONDE, l_circular.quitarValorInicio(), is(equalTo(null)));
+    }
+
+    /**
+     * Prueba que el funcionamiento de la arraylist, sea correcto.
+     */
+    @Test
+    public void testArrayList() {
+        final Consumible<Integer> l_arrayList = new ArrayList2<>(10);
+        l_arrayList.ponerValorInicio(3);
+        l_arrayList.ponerValorFinal(4);
+        l_arrayList.ponerValorInicio(2);
+        l_arrayList.ponerValorFinal(5);
+        l_arrayList.ponerValorInicio(1);
+        l_arrayList.ponerValorFinal(6);
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorFinal(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorInicio(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorFinal(), is(equalTo(5)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorInicio(), is(equalTo(2)));
+        l_arrayList.ponerValorInicio(6);
+        l_arrayList.ponerValorFinal(5);
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorFinal(), is(equalTo(5)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorInicio(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorFinal(), is(equalTo(4)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorInicio(), is(equalTo(3)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorInicio(), is(equalTo(null)));
+        l_arrayList.ponerValorInicio(5);
+        l_arrayList.ponerValorFinal(6);
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorFinal(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorInicio(), is(equalTo(5)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorFinal(), is(equalTo(null)));
+        l_arrayList.ponerValorFinal(10);
+        l_arrayList.ponerValorInicio(9);
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorInicio(), is(equalTo(9)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorFinal(), is(equalTo(10)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorInicio(), is(equalTo(null)));
     }
 }
