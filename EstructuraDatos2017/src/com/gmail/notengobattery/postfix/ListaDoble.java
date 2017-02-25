@@ -21,6 +21,8 @@ public class ListaDoble<T> implements Consumible<T> {
         }
         if (m_cabeza != null) {
             m_cabeza.setAnterior(null);
+        }else {
+            m_ultimo=null;
         }
         return l_valor;
     }

@@ -103,6 +103,12 @@ public class DataStructsTest {
         assertThat(VALOR_NO_CORRESPONDE, l_listaDoble.quitarValorInicio(), is(equalTo(5)));
         assertThat(VALOR_NO_CORRESPONDE, l_listaDoble.quitarValorInicio(), is(equalTo(6)));
         assertThat(VALOR_NO_CORRESPONDE, l_listaDoble.quitarValorInicio(), is(equalTo(null)));
+        l_listaDoble.ponerValorInicio(5);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaDoble.quitarValorFinal(), is(equalTo(5)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaDoble.quitarValorFinal(), is(equalTo(null)));
+        l_listaDoble.ponerValorInicio(6);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaDoble.quitarValorInicio(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaDoble.quitarValorFinal(), is(equalTo(null)));
     }
 
     /**
@@ -128,5 +134,11 @@ public class DataStructsTest {
         assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorInicio(), is(equalTo(5)));
         assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorInicio(), is(equalTo(6)));
         assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorInicio(), is(equalTo(null)));
+        l_listaCircular.ponerValorInicio(5);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorFinal(), is(equalTo(5)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorFinal(), is(equalTo(null)));
+        l_listaCircular.ponerValorInicio(6);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorInicio(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorFinal(), is(equalTo(null)));
     }
 }

@@ -14,13 +14,16 @@ public class ListaCircular<T> implements Consumible<T> {
     public T quitarValorInicio() {
         final T l_valor = (m_cabeza != null) ? m_cabeza.getElemento() : null;
         final NodoDoble<T> l_cabeza = m_cabeza;
-        final NodoDoble<T> l_anterior = (l_cabeza != null) ? l_cabeza.getAnterior() : null;
+        final NodoDoble<T> l_anterior = (l_cabeza != null) ? l_cabeza.getAnterior() : m_cabeza;
         if ((l_cabeza != null) && (l_anterior != null)) {
-            m_cabeza = (NodoDoble<T>) m_cabeza.getSiguiente();
+            m_cabeza = (m_cabeza == l_anterior) ? null : (NodoDoble<T>) m_cabeza.getSiguiente();
             l_anterior.setSiguiente(m_cabeza);
         }
         if ((l_cabeza != null) && (m_cabeza != null)) {
             m_cabeza.setAnterior(l_cabeza.getAnterior());
+        }
+        if (l_anterior == null) {
+            m_cabeza = null;
         }
         return l_valor;
     }
@@ -29,13 +32,21 @@ public class ListaCircular<T> implements Consumible<T> {
     @Override
     public T quitarValorFinal() {
         final NodoDoble<T> l_nodoFinal = (m_cabeza != null) ? m_cabeza.getAnterior() : null;
-        final T l_valor = (l_nodoFinal != null) ? l_nodoFinal.getElemento() : null;
-        final NodoDoble<T> l_anterior = (l_nodoFinal != null) ? l_nodoFinal.getAnterior() : null;
-        if (l_anterior != null) {
-            l_anterior.setSiguiente(m_cabeza);
-            m_cabeza.setAnterior(l_anterior);
+        final T l_valor;
+        if (m_cabeza != null) {
+            l_valor = (l_nodoFinal != null) ? l_nodoFinal.getElemento() : m_cabeza.getElemento();
+            final NodoDoble<T> l_anterior =
+                    (l_nodoFinal != null) ? l_nodoFinal.getAnterior() : m_cabeza;
+            if (l_anterior != null) {
+                l_anterior.setSiguiente(m_cabeza);
+                m_cabeza.setAnterior(l_anterior);
+            }
+            if (l_anterior == m_cabeza) {
+                m_cabeza = null;
+            }
+            return l_valor;
         }
-        return l_valor;
+        return null;
     }
 
     @Override
