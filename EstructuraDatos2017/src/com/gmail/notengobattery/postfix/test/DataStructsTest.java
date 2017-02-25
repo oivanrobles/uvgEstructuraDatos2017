@@ -1,5 +1,6 @@
 import com.gmail.notengobattery.postfix.Consumible;
 import com.gmail.notengobattery.postfix.Lista;
+import com.gmail.notengobattery.postfix.ListaCircular;
 import com.gmail.notengobattery.postfix.ListaDoble;
 import com.gmail.notengobattery.postfix.Vector;
 
@@ -39,6 +40,13 @@ public class DataStructsTest {
         assertThat(VALOR_NO_CORRESPONDE, l_vector.quitarValorFinal(), is(equalTo(3)));
         assertThat(VALOR_NO_CORRESPONDE, l_vector.quitarValorInicio(), is(equalTo(5)));
         assertThat(VALOR_NO_CORRESPONDE, l_vector.quitarValorInicio(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_vector.quitarValorInicio(), is(equalTo(null)));
+        l_vector.ponerValorInicio(5);
+        assertThat(VALOR_NO_CORRESPONDE, l_vector.quitarValorFinal(), is(equalTo(5)));
+        assertThat(VALOR_NO_CORRESPONDE, l_vector.quitarValorFinal(), is(equalTo(null)));
+        l_vector.ponerValorInicio(6);
+        assertThat(VALOR_NO_CORRESPONDE, l_vector.quitarValorInicio(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_vector.quitarValorFinal(), is(equalTo(null)));
     }
 
     /**
@@ -63,6 +71,13 @@ public class DataStructsTest {
         assertThat(VALOR_NO_CORRESPONDE, l_listaSimple.quitarValorFinal(), is(equalTo(3)));
         assertThat(VALOR_NO_CORRESPONDE, l_listaSimple.quitarValorInicio(), is(equalTo(5)));
         assertThat(VALOR_NO_CORRESPONDE, l_listaSimple.quitarValorInicio(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaSimple.quitarValorInicio(), is(equalTo(null)));
+        l_listaSimple.ponerValorInicio(5);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaSimple.quitarValorFinal(), is(equalTo(5)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaSimple.quitarValorFinal(), is(equalTo(null)));
+        l_listaSimple.ponerValorInicio(6);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaSimple.quitarValorInicio(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaSimple.quitarValorFinal(), is(equalTo(null)));
     }
 
     /**
@@ -87,5 +102,31 @@ public class DataStructsTest {
         assertThat(VALOR_NO_CORRESPONDE, l_listaDoble.quitarValorFinal(), is(equalTo(3)));
         assertThat(VALOR_NO_CORRESPONDE, l_listaDoble.quitarValorInicio(), is(equalTo(5)));
         assertThat(VALOR_NO_CORRESPONDE, l_listaDoble.quitarValorInicio(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaDoble.quitarValorInicio(), is(equalTo(null)));
+    }
+
+    /**
+     * Prueba que el funcionamiento de la lista circular, sea correcto.
+     */
+    @Test
+    public void testListaCircular() {
+        final Consumible<Integer> l_listaCircular = new ListaCircular<>();
+        l_listaCircular.ponerValorFinal(1);
+        l_listaCircular.ponerValorFinal(2);
+        l_listaCircular.ponerValorFinal(3);
+        l_listaCircular.ponerValorFinal(4);
+        l_listaCircular.ponerValorFinal(5);
+        l_listaCircular.ponerValorFinal(6);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorFinal(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorFinal(), is(equalTo(5)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorInicio(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorInicio(), is(equalTo(2)));
+        l_listaCircular.ponerValorInicio(6);
+        l_listaCircular.ponerValorInicio(5);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorFinal(), is(equalTo(4)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorFinal(), is(equalTo(3)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorInicio(), is(equalTo(5)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorInicio(), is(equalTo(6)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircular.quitarValorInicio(), is(equalTo(null)));
     }
 }

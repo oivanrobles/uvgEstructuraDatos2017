@@ -1,5 +1,7 @@
 package com.gmail.notengobattery.postfix;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Arrays;
 
 /**
@@ -30,18 +32,23 @@ public class Vector<T extends Comparable<T>> implements Consumible<T> {
 
     @Override
     public T quitarValorInicio() throws IndexOutOfBoundsException {
-        final T l_val = (T) m_array[0];
+        @Nullable T l_val = (T) m_array[0];
         // Hacer el "shift" del array hacia la izquierda
         System.arraycopy(m_array, 1, m_array, 0, m_ultimo + 1);
         m_ultimo--;
         if (m_ultimo < 0) {
-            throw new IndexOutOfBoundsException("No más elementos en el vector.");
+            l_val = null;
+            m_ultimo = 0;
         }
         return l_val;
     }
 
+    @Nullable
     @Override
     public T quitarValorFinal() {
+        if (m_ultimo <= 0) {
+            return null;
+        }
         final T l_val = (T) m_array[m_ultimo - 1];
         // Destruir la referencia (no es estrictamente necesario)
         // m_array[m_ultimo - 1] = null;

@@ -22,6 +22,7 @@ public class NodoDoble<T> extends Nodo<T> {
      *
      * @return el nodo anterior
      */
+    @Nullable
     public NodoDoble<T> getAnterior() {
         return m_anterior;
     }

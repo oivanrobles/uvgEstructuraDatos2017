@@ -38,6 +38,11 @@ public class Lista<T> implements Consumible<T> {
             l_anterior.setSiguiente(null);
         }
         m_ultimo = l_actual;
+        if (m_ultimo == m_cabeza) {
+            m_ultimo = null;
+            m_cabeza = null;
+            return null;
+        }
         if (l_actual != null) {
             return l_actual.getElemento();
         }

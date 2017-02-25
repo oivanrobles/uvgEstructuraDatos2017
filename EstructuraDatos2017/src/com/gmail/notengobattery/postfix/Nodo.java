@@ -14,7 +14,7 @@ public class Nodo<T> {
      *
      * @param elemento
      */
-    public Nodo(final T elemento) {
+    public Nodo(@Nullable final T elemento) {
         m_elemento = elemento;
     }
 
@@ -23,6 +23,7 @@ public class Nodo<T> {
      *
      * @return el valor del elemento
      */
+    @Nullable
     public T getElemento() {
         return m_elemento;
     }
@@ -32,7 +33,7 @@ public class Nodo<T> {
      *
      * @param elemento el nuevo valor de elemento
      */
-    public void setElemento(final T elemento) {
+    public void setElemento(@Nullable final T elemento) {
         m_elemento = elemento;
     }
 
@@ -41,6 +42,7 @@ public class Nodo<T> {
      *
      * @return el nodo siguiente
      */
+    @Nullable
     public Nodo<T> getSiguiente() {
         return m_siguiente;
     }
