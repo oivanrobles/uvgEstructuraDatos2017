@@ -3,59 +3,111 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="181.37500000000006" y="11.0">com.gmail.notengobattery.postfix.IPila</node>
-    <node x="493.25000000000006" y="382.0">com.gmail.notengobattery.postfix.PilaVector</node>
-    <node x="321.0" y="168.0">com.gmail.notengobattery.postfix.Pila</node>
-    <node x="0.0" y="190.0">com.gmail.notengobattery.postfix.CalculadoraPostfix</node>
-    <node x="598.0" y="191.0">com.gmail.notengobattery.postfix.Vector</node>
-    <node x="496.87500000000006" y="0.0">com.gmail.notengobattery.postfix.Consumible</node>
+    <node x="1305.874358974359" y="324.0">com.gmail.notengobattery.postfix.NodoDoble</node>
+    <node x="1297.6666666666665" y="570.0">com.gmail.notengobattery.postfix.ListaDoble</node>
+    <node x="192.85961538461538" y="56.0">com.gmail.notengobattery.postfix.IPila</node>
+    <node x="530.7346153846154" y="636.5">com.gmail.notengobattery.postfix.PilaVector</node>
+    <node x="1142.9846153846154" y="0.0">com.gmail.notengobattery.postfix.Nodo</node>
+    <node x="321.0" y="302.0">com.gmail.notengobattery.postfix.Pila</node>
+    <node x="0.0" y="800.0">com.gmail.notengobattery.postfix.PilaLista</node>
+    <node x="989.8743589743589" y="291.5">com.gmail.notengobattery.postfix.Lista</node>
+    <node x="0.0" y="324.0">com.gmail.notengobattery.postfix.CalculadoraPostfix</node>
+    <node x="598.0" y="258.0">com.gmail.notengobattery.postfix.Vector</node>
+    <node x="781.4737179487179" y="45.0">com.gmail.notengobattery.postfix.Consumible</node>
+    <node x="929.3333333333333" y="581.0">com.gmail.notengobattery.postfix.ListaCircular</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="com.gmail.notengobattery.postfix.PilaVector" target="com.gmail.notengobattery.postfix.Pila">
-      <point x="-44.75" y="-26.0" />
-      <point x="538.0" y="357.0" />
-      <point x="449.5" y="357.0" />
-      <point x="0.0" y="82.0" />
+    <edge source="com.gmail.notengobattery.postfix.NodoDoble" target="com.gmail.notengobattery.postfix.Nodo">
+      <point x="0.0" y="-60.0" />
+      <point x="1443.874358974359" y="238.0" />
+      <point x="1375.4846153846154" y="238.0" />
+      <point x="93.0" y="104.0" />
     </edge>
-    <edge source="com.gmail.notengobattery.postfix.PilaVector" target="com.gmail.notengobattery.postfix.Vector">
-      <point x="44.75" y="-26.0" />
-      <point x="627.5" y="357.0" />
-      <point x="716.0" y="357.0" />
+    <edge source="com.gmail.notengobattery.postfix.ListaCircular" target="com.gmail.notengobattery.postfix.Consumible">
+      <point x="-103.66666666666674" y="-81.5" />
+      <point x="981.1666666666665" y="550.0" />
+      <point x="948.5" y="550.0" />
+      <point x="948.5" y="238.0" />
+      <point x="899.4737179487179" y="238.0" />
       <point x="0.0" y="59.0" />
     </edge>
-    <edge source="com.gmail.notengobattery.postfix.Pila" target="com.gmail.notengobattery.postfix.IPila">
-      <point x="-64.25" y="-82.0" />
-      <point x="385.25" y="143.0" />
-      <point x="311.12500000000006" y="143.0" />
-      <point x="43.25" y="48.0" />
+    <edge source="com.gmail.notengobattery.postfix.Lista" target="com.gmail.notengobattery.postfix.Nodo">
+      <point x="0.0" y="-92.5" />
+      <point x="1137.874358974359" y="238.0" />
+      <point x="1189.4846153846154" y="238.0" />
+      <point x="-93.0" y="104.0" />
+    </edge>
+    <edge source="com.gmail.notengobattery.postfix.Lista" target="com.gmail.notengobattery.postfix.Consumible">
+      <point x="-98.66666666666674" y="-92.5" />
+      <point x="1039.207692307692" y="238.0" />
+      <point x="993.8737179487177" y="238.0" />
+      <point x="94.39999999999998" y="59.0" />
+    </edge>
+    <edge source="com.gmail.notengobattery.postfix.ListaDoble" target="com.gmail.notengobattery.postfix.Consumible">
+      <point x="-110.33333333333326" y="-92.5" />
+      <point x="1352.8333333333333" y="530.0" />
+      <point x="979.3743589743589" y="530.0" />
+      <point x="979.3743589743589" y="228.0" />
+      <point x="946.6737179487179" y="228.0" />
+      <point x="47.200000000000045" y="59.0" />
+    </edge>
+    <edge source="com.gmail.notengobattery.postfix.Vector" target="com.gmail.notengobattery.postfix.Consumible">
+      <point x="0.0" y="-126.0" />
+      <point x="768.0" y="238.0" />
+      <point x="852.2737179487178" y="238.0" />
+      <point x="-47.200000000000045" y="59.0" />
     </edge>
     <edge source="com.gmail.notengobattery.postfix.Pila" target="com.gmail.notengobattery.postfix.Consumible">
       <point x="64.25" y="-82.0" />
-      <point x="513.75" y="143.0" />
-      <point x="555.875" y="143.0" />
-      <point x="-59.0" y="59.0" />
+      <point x="513.75" y="228.0" />
+      <point x="805.0737179487178" y="228.0" />
+      <point x="-94.39999999999998" y="59.0" />
     </edge>
-    <edge source="com.gmail.notengobattery.postfix.Vector" target="com.gmail.notengobattery.postfix.Consumible">
-      <point x="0.0" y="-59.0" />
-      <point x="716.0" y="143.0" />
-      <point x="673.875" y="143.0" />
-      <point x="59.0" y="59.0" />
+    <edge source="com.gmail.notengobattery.postfix.ListaDoble" target="com.gmail.notengobattery.postfix.NodoDoble">
+      <point x="0.0" y="-92.5" />
+      <point x="1463.1666666666665" y="550.0" />
+      <point x="1478.374358974359" y="550.0" />
+      <point x="34.5" y="60.0" />
     </edge>
     <edge source="com.gmail.notengobattery.postfix.CalculadoraPostfix" target="com.gmail.notengobattery.postfix.IPila">
       <point x="0.0" y="-60.0" />
-      <point x="150.5" y="143.0" />
-      <point x="224.62500000000006" y="143.0" />
+      <point x="150.5" y="238.0" />
+      <point x="236.10961538461538" y="238.0" />
       <point x="-43.25" y="48.0" />
     </edge>
+    <edge source="com.gmail.notengobattery.postfix.PilaVector" target="com.gmail.notengobattery.postfix.Vector">
+      <point x="44.75" y="-26.0" />
+      <point x="664.9846153846154" y="550.0" />
+      <point x="768.0" y="550.0" />
+      <point x="0.0" y="126.0" />
+    </edge>
+    <edge source="com.gmail.notengobattery.postfix.PilaVector" target="com.gmail.notengobattery.postfix.Pila">
+      <point x="-44.75" y="-26.0" />
+      <point x="575.4846153846154" y="550.0" />
+      <point x="449.5" y="550.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="com.gmail.notengobattery.postfix.Pila" target="com.gmail.notengobattery.postfix.IPila">
+      <point x="-64.25" y="-82.0" />
+      <point x="385.25" y="238.0" />
+      <point x="322.6096153846154" y="238.0" />
+      <point x="43.25" y="48.0" />
+    </edge>
+    <edge source="com.gmail.notengobattery.postfix.ListaCircular" target="com.gmail.notengobattery.postfix.NodoDoble">
+      <point x="0.0" y="-81.5" />
+      <point x="1084.8333333333333" y="540.0" />
+      <point x="1340.374358974359" y="540.0" />
+      <point x="-103.5" y="60.0" />
+    </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="417.0" y="217.0" />
+  <settings layout="Hierarchic Group" zoom="0.6300788356579745" x="814.5" y="415.0" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
+    <Category>Inner Classes</Category>
     <Category>Constructors</Category>
     <Category>Methods</Category>
-    <Category>Inner Classes</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
