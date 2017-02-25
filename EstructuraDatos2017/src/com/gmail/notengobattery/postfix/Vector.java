@@ -34,7 +34,7 @@ public class Vector<T extends Comparable<T>> implements Consumible<T> {
     public T quitarValorInicio() throws IndexOutOfBoundsException {
         @Nullable T l_val = (T) m_array[0];
         // Hacer el "shift" del array hacia la izquierda
-        System.arraycopy(m_array, 1, m_array, 0, m_ultimo + 1);
+        System.arraycopy(m_array, 1, m_array, 0, m_ultimo);
         m_ultimo--;
         if (m_ultimo < 0) {
             l_val = null;

@@ -4,7 +4,7 @@ package com.gmail.notengobattery.postfix;
  * Una nueva clase que representa una calculadora POSTFIX.
  */
 public final class CalculadoraPostfix {
-    private static CalculadoraPostfix s_instancia = null;
+    private static CalculadoraPostfix s_instancia;
     private IPila m_pila;
 
     // Constructor privado para evitar la instanciación

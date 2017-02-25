@@ -31,19 +31,19 @@ public class ListaCircular<T> implements Consumible<T> {
     @Nullable
     @Override
     public T quitarValorFinal() {
-        final NodoDoble<T> l_nodoFinal = (m_cabeza != null) ? m_cabeza.getAnterior() : null;
+        NodoDoble<T> l_nodoFinal = (m_cabeza != null) ? m_cabeza.getAnterior() : null;
         final T l_valor;
         if (m_cabeza != null) {
             l_valor = (l_nodoFinal != null) ? l_nodoFinal.getElemento() : m_cabeza.getElemento();
             final NodoDoble<T> l_anterior =
                     (l_nodoFinal != null) ? l_nodoFinal.getAnterior() : m_cabeza;
+            NodoDoble<T> l_tmp;
+            l_tmp = (m_cabeza.getAnterior() == m_cabeza) ? null : m_cabeza;
             if (l_anterior != null) {
                 l_anterior.setSiguiente(m_cabeza);
                 m_cabeza.setAnterior(l_anterior);
             }
-            if (l_anterior == m_cabeza) {
-                m_cabeza = null;
-            }
+            m_cabeza = l_tmp;
             return l_valor;
         }
         return null;
@@ -64,11 +64,18 @@ public class ListaCircular<T> implements Consumible<T> {
     @Override
     public void ponerValorFinal(final T valor) {
         final NodoDoble<T> l_temp = new NodoDoble<T>(valor);
-        if ((m_cabeza != null) && m_cabeza.getAnterior() != null) {
-            l_temp.setSiguiente(m_cabeza);
-            m_cabeza.getAnterior().setSiguiente(l_temp);
-            l_temp.setAnterior(m_cabeza.getAnterior());
-            m_cabeza.setAnterior(l_temp);
+        if ((m_cabeza != null)) {
+            if (m_cabeza.getAnterior() != null) {
+                l_temp.setSiguiente(m_cabeza);
+                m_cabeza.getAnterior().setSiguiente(l_temp);
+                l_temp.setAnterior(m_cabeza.getAnterior());
+                m_cabeza.setAnterior(l_temp);
+            } else {
+                l_temp.setSiguiente(m_cabeza);
+                m_cabeza.setSiguiente(l_temp);
+                l_temp.setAnterior(m_cabeza);
+                m_cabeza.setAnterior(l_temp);
+            }
         } else {
             m_cabeza = l_temp;
             m_cabeza.setAnterior(m_cabeza);

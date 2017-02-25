@@ -55,4 +55,9 @@ public class Nodo<T> {
     public void setSiguiente(@Nullable final Nodo<T> siguiente) {
         m_siguiente = siguiente;
     }
+
+    @Override
+    public String toString() {
+        return m_elemento.toString();
+    }
 }
