@@ -18,9 +18,12 @@ public final class CalculadoraPostfix {
     }
 
     /**
+     * @param tipo el tipo de {@link Consumible} producido por la fábrica {@link
+     *             FabricaConsumibles}
+     *
      * @return devuelve la instancia del singletón de esta clase
      */
-    public static CalculadoraPostfix getInstancia(int tipo) {
+    public static CalculadoraPostfix getInstancia(final int tipo) {
         s_instancia = (s_instancia == null) ? new CalculadoraPostfix() : s_instancia;
         return s_instancia;
     }
@@ -51,6 +54,8 @@ public final class CalculadoraPostfix {
      * @param io la entrada de datos para la calculadora
      *
      * @return un arreglo que contiene todos los valores calculados hasta el EOF
+     *
+     * @throws OperadorIlegalException cuando la operación no puede realizarse
      */
     public List<Double> calcular(final InputStream io) throws OperadorIlegalException {
         final List<Double> l_resultados = new ArrayList<>(10);
@@ -67,6 +72,9 @@ public final class CalculadoraPostfix {
                 final String[] l_iterable = l_next.split(" ");
                 // Separa los números y los operadores
                 for (String l_s : l_iterable) {
+                    if (l_s.isEmpty()) {
+                        continue;
+                    }
                     try {
                         switch (l_s) {
                             case "e":
@@ -86,50 +94,77 @@ public final class CalculadoraPostfix {
                     }
                 }
                 // Realiza el cálculo y lo agrega al array
-                l_resultados.add(operar(l_numeros, l_operadores));
+                Double l_calculado = operar(l_numeros, l_operadores);
+                if (l_calculado != null) {
+                    l_resultados.add(l_calculado);
+                }
             }
         }
         return l_resultados;
     }
 
-    private static double operar(final IPila<Double> numeros, final IPila<String> operadores)
+    private static Double operar(final IPila<Double> numeros, final IPila<String> operadores)
             throws OperadorIlegalException {
         // Sacar el operador de la pila y determinar la operación
         String l_operador = operadores.consumir();
         while (l_operador != null) {
             final Double l_arg1 = numeros.consumir();
             final Double l_arg2 = numeros.consumir();
-            if ((l_arg1 == null) || (l_arg2 == null)) {
-                throw new ArgumentosInvalidosException(l_arg1, l_arg2, l_operador);
-            }
             switch (l_operador) {
                 // Realiza la operación, y agrega a la pila el resultado
                 case "*":
+                    if ((l_arg1 == null) || (l_arg2 == null)) {
+                        throw new ArgumentosInvalidosException(l_arg1, l_arg2, l_operador);
+                    }
                     numeros.producir(l_arg1 * l_arg2);
                     break;
                 case "/":
+                    if ((l_arg1 == null) || (l_arg2 == null)) {
+                        throw new ArgumentosInvalidosException(l_arg1, l_arg2, l_operador);
+                    }
                     numeros.producir(l_arg1 / l_arg2);
                     break;
                 case "%":
+                    if ((l_arg1 == null) || (l_arg2 == null)) {
+                        throw new ArgumentosInvalidosException(l_arg1, l_arg2, l_operador);
+                    }
                     numeros.producir(l_arg1 % l_arg2);
                     break;
                 case "-":
+                    if ((l_arg1 == null) || (l_arg2 == null)) {
+                        throw new ArgumentosInvalidosException(l_arg1, l_arg2, l_operador);
+                    }
                     numeros.producir(l_arg1 - l_arg2);
                     break;
                 case "+":
+                    if ((l_arg1 == null) || (l_arg2 == null)) {
+                        throw new ArgumentosInvalidosException(l_arg1, l_arg2, l_operador);
+                    }
                     numeros.producir(l_arg1 + l_arg2);
                     break;
                 case "<<":
+                    if ((l_arg1 == null) || (l_arg2 == null)) {
+                        throw new ArgumentosInvalidosException(l_arg1, l_arg2, l_operador);
+                    }
                     numeros.producir((double) (Math.round(l_arg1) << Math.round(l_arg2)));
                     break;
                 case ">>":
+                    if ((l_arg1 == null) || (l_arg2 == null)) {
+                        throw new ArgumentosInvalidosException(l_arg1, l_arg2, l_operador);
+                    }
                     numeros.producir((double) (Math.round(l_arg1) >> Math.round(l_arg2)));
                     break;
                 case "**":
+                    if ((l_arg1 == null) || (l_arg2 == null)) {
+                        throw new ArgumentosInvalidosException(l_arg1, l_arg2, l_operador);
+                    }
                     numeros.producir(StrictMath.pow(l_arg1, l_arg2));
                     break;
                 case "//":
-                    numeros.producir(StrictMath.pow(Math.abs(l_arg2), 1.0 / l_arg2));
+                    if ((l_arg1 == null) || (l_arg2 == null)) {
+                        throw new ArgumentosInvalidosException(l_arg1, l_arg2, l_operador);
+                    }
+                    numeros.producir(StrictMath.pow(Math.abs(l_arg1), 1.0 / l_arg2));
                     break;
                 default:
                     throw new OperadorIlegalException(l_operador);
