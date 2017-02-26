@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * Clase de implementación mínima del {@link Consumible} de tipo Vector.
  */
-public class Vector<T extends Comparable<T>> implements Consumible<T> {
+public class Vector<T> implements Consumible<T> {
     private final int m_incremento;
     private int m_ultimo;
     private int m_tamano;

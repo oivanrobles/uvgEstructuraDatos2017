@@ -12,7 +12,7 @@ public class Nodo<T> {
     /**
      * Crea un nuevo Nodo
      *
-     * @param elemento
+     * @param elemento el valor del nuevo nodo
      */
     public Nodo(@Nullable final T elemento) {
         m_elemento = elemento;

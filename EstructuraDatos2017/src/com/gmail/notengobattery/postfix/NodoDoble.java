@@ -28,7 +28,9 @@ public class NodoDoble<T> extends Nodo<T> {
     }
 
     /**
-     * @param anterior
+     * Cambia el puntero al nodo anterior
+     *
+     * @param anterior un puntero al nodo anterior
      */
     public void setAnterior(@Nullable final NodoDoble<T> anterior) {
         m_anterior = anterior;

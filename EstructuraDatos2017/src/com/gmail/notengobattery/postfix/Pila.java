@@ -38,4 +38,9 @@ public abstract class Pila<T> implements IPila<T> {
     public boolean isFifo() {
         return m_isFifo;
     }
+
+    @Override
+    public String toString() {
+        return m_almacenamiento.toString();
+    }
 }

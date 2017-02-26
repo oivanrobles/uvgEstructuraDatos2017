@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public enum FabricaConsumibles {
     ;
-    public static final int LISTA_NORMAL = 0;
+    public static final int LISTA_SIMPLE = 0;
     public static final int LISTA_DOBLE = 1;
     public static final int LISTA_CIRCULAR = 2;
     public static final int VECTOR = 3;
@@ -24,18 +24,18 @@ public enum FabricaConsumibles {
      * @return el consumible solicitado
      */
     @Nullable
-    static Consumible<?> getLista(final int tipo) {
+    static <T> Consumible<T> getConsumible(final int tipo) {
         switch (tipo) {
-            case LISTA_NORMAL:
-                return new Lista<>();
+            case LISTA_SIMPLE:
+                return new Lista<T>();
             case LISTA_DOBLE:
-                return new ListaDoble<>();
+                return new ListaDoble<T>();
             case LISTA_CIRCULAR:
-                return new ListaCircular<>();
+                return new ListaCircular<T>();
             case VECTOR:
-                return new Vector<>(s_vectorInicial, s_vectorIncremento);
+                return new Vector<T>(s_vectorInicial, s_vectorIncremento);
             case ARRAYLIST:
-                return new ArrayList2(s_valorInicial);
+                return new ArrayList2<T>(s_valorInicial);
             default:
                 return null;
         }

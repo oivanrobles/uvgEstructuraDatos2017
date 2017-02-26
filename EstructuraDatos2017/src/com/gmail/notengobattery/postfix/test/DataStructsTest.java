@@ -1,8 +1,11 @@
 import com.gmail.notengobattery.postfix.ArrayList2;
 import com.gmail.notengobattery.postfix.Consumible;
+import com.gmail.notengobattery.postfix.FabricaConsumibles;
+import com.gmail.notengobattery.postfix.IPila;
 import com.gmail.notengobattery.postfix.Lista;
 import com.gmail.notengobattery.postfix.ListaCircular;
 import com.gmail.notengobattery.postfix.ListaDoble;
+import com.gmail.notengobattery.postfix.PilaFabricada;
 import com.gmail.notengobattery.postfix.Vector;
 
 import org.junit.Test;
@@ -192,5 +195,92 @@ public class DataStructsTest {
         assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorInicio(), is(equalTo(9)));
         assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorFinal(), is(equalTo(10)));
         assertThat(VALOR_NO_CORRESPONDE, l_arrayList.quitarValorInicio(), is(equalTo(null)));
+    }
+
+    /**
+     * Realiza las pruebas unitarias para comprobar que la pila funciona de manera correcta.
+     * Prueba tanto la fábrica {@link PilaFabricada}, como cada uno de las estructuras de datos
+     * de la interfaz {@link Consumible}.
+     */
+    @Test
+    public void testPila() {
+        // Probar la pila FIFO basada en vectores
+        final IPila<Integer> l_vectorFIFO = new PilaFabricada<>(true, FabricaConsumibles.VECTOR);
+        l_vectorFIFO.producir(0);
+        l_vectorFIFO.producir(1);
+        assertThat(VALOR_NO_CORRESPONDE, l_vectorFIFO.consumir(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_vectorFIFO.consumir(), is(equalTo(0)));
+        assertThat(VALOR_NO_CORRESPONDE, l_vectorFIFO.consumir(), is(equalTo(null)));
+        // Probar la pila LIFO basada en vectores
+        final IPila<Integer> l_vectorLIFO = new PilaFabricada<>(false, FabricaConsumibles.VECTOR);
+        l_vectorLIFO.producir(0);
+        l_vectorLIFO.producir(1);
+        assertThat(VALOR_NO_CORRESPONDE, l_vectorLIFO.consumir(), is(equalTo(0)));
+        assertThat(VALOR_NO_CORRESPONDE, l_vectorLIFO.consumir(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_vectorLIFO.consumir(), is(equalTo(null)));
+        // Probar la pila FIFO basada en ArrayList2
+        final IPila<Integer> l_arrayList2FIFO =
+                new PilaFabricada<>(true, FabricaConsumibles.ARRAYLIST);
+        l_arrayList2FIFO.producir(0);
+        l_arrayList2FIFO.producir(1);
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList2FIFO.consumir(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList2FIFO.consumir(), is(equalTo(0)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList2FIFO.consumir(), is(equalTo(null)));
+        // Probar la pila LIFO basada en ArrayList2
+        final IPila<Integer> l_arrayList2LIFO =
+                new PilaFabricada<>(false, FabricaConsumibles.VECTOR);
+        l_arrayList2LIFO.producir(0);
+        l_arrayList2LIFO.producir(1);
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList2LIFO.consumir(), is(equalTo(0)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList2LIFO.consumir(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_arrayList2LIFO.consumir(), is(equalTo(null)));
+        // Probar la pila FIFO basada en Lista Circular
+        final IPila<Integer> l_listaCircularFIFO =
+                new PilaFabricada<>(true, FabricaConsumibles.LISTA_CIRCULAR);
+        l_listaCircularFIFO.producir(0);
+        l_listaCircularFIFO.producir(1);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircularFIFO.consumir(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircularFIFO.consumir(), is(equalTo(0)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircularFIFO.consumir(), is(equalTo(null)));
+        // Probar la pila LIFO basada en Lista Circular
+        final IPila<Integer> l_listaCircularLIFO =
+                new PilaFabricada<>(false, FabricaConsumibles.LISTA_CIRCULAR);
+        l_listaCircularLIFO.producir(0);
+        l_listaCircularLIFO.producir(1);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircularLIFO.consumir(), is(equalTo(0)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircularLIFO.consumir(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaCircularLIFO.consumir(), is(equalTo(null)));
+        // Probar la pila FIFO basada en Lista Simple
+        final IPila<Integer> l_listaFIFO =
+                new PilaFabricada<>(true, FabricaConsumibles.LISTA_SIMPLE);
+        l_listaFIFO.producir(0);
+        l_listaFIFO.producir(1);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaFIFO.consumir(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaFIFO.consumir(), is(equalTo(0)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaFIFO.consumir(), is(equalTo(null)));
+        // Probar la pila LIFO basada en Lista Simple
+        final IPila<Integer> l_listaLIFO =
+                new PilaFabricada<>(false, FabricaConsumibles.LISTA_CIRCULAR);
+        l_listaLIFO.producir(0);
+        l_listaLIFO.producir(1);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaLIFO.consumir(), is(equalTo(0)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaLIFO.consumir(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaLIFO.consumir(), is(equalTo(null)));
+        // Probar la pila FIFO basada en Lista Doble
+        final IPila<Integer> l_listaDobleFIFO =
+                new PilaFabricada<>(true, FabricaConsumibles.LISTA_DOBLE);
+        l_listaDobleFIFO.producir(0);
+        l_listaDobleFIFO.producir(1);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaDobleFIFO.consumir(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaDobleFIFO.consumir(), is(equalTo(0)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaDobleFIFO.consumir(), is(equalTo(null)));
+        // Probar la pila LIFO basada en Lista Doble
+        final IPila<Integer> l_listaDobleLIFO =
+                new PilaFabricada<>(false, FabricaConsumibles.LISTA_DOBLE);
+        l_listaDobleLIFO.producir(0);
+        l_listaDobleLIFO.producir(1);
+        assertThat(VALOR_NO_CORRESPONDE, l_listaDobleLIFO.consumir(), is(equalTo(0)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaDobleLIFO.consumir(), is(equalTo(1)));
+        assertThat(VALOR_NO_CORRESPONDE, l_listaDobleLIFO.consumir(), is(equalTo(null)));
     }
 }
